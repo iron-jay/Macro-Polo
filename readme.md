@@ -1,4 +1,4 @@
-# Macro Polo#
+# Macro Polo #
 
 -------------------
 
@@ -7,14 +7,14 @@ If it does, it will show a message say if the macro has been digitally signed or
 
 Example:<br>
 Excel - unsigned:<br>
-![excel](images/excel-unsigned.png)
+![excel](master/images/excel-unsigned.png)
 
 Excel - signed:<br>
-![excel](images/excel-signed.png)
+![excel](master/images/excel-signed.png)
 
 Word - unsigned:<br>
-![excel](images/word-unsigned.png)
+![excel](master/images/word-unsigned.png)
 
 Word - signed:<br>
-![excel](images/word-signed.png)
+![excel](master/images/word-signed.png)
 
