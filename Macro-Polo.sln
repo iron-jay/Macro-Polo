@@ -9,6 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Macro-Polo-Word", "Macro-Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marco-Polo-PowerPoint", "Marco-Polo-PowerPoint\Marco-Polo-PowerPoint.csproj", "{B1E40269-56EA-4456-9B6C-DBBCE21AB634}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{676BAC7E-30AA-43DB-95C8-7A1B54CA2CFD}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{AC027257-5FEA-4613-B6AD-82BA04D65464}"
+	ProjectSection(SolutionItems) = preProject
+		Images\excel-signed.png = Images\excel-signed.png
+		Images\excel-unsigned.png = Images\excel-unsigned.png
+		Images\word-signed.png = Images\word-signed.png
+		Images\word-unsigned.png = Images\word-unsigned.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +43,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC027257-5FEA-4613-B6AD-82BA04D65464} = {676BAC7E-30AA-43DB-95C8-7A1B54CA2CFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6638346D-543B-44F0-A7E6-65424275CE0C}
