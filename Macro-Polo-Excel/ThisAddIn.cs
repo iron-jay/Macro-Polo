@@ -63,7 +63,7 @@ namespace Macro_Polo_Excel
                         myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                         myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                        myCustomTaskPane.Height = 65;
+                        myCustomTaskPane.Height = 90;
                         myCustomTaskPane.Visible = true;
                     }
                     else
@@ -88,7 +88,7 @@ namespace Macro_Polo_Excel
                             myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                             myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 65;
+                            myCustomTaskPane.Height = 90;
                             myCustomTaskPane.Visible = true;
 
                         }

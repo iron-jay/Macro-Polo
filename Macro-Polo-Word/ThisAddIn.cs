@@ -45,6 +45,7 @@ namespace Macro_Polo_Word
             {
                 if (Doc.HasVBProject)
                 {
+
                     if (AreMacrosEnabled() == 4)
                     {
                         warningLabel = new Label
@@ -61,11 +62,11 @@ namespace Macro_Polo_Word
                         UserControl1 = new UserControl();
                         UserControl1.BackColor = System.Drawing.Color.Gray;
                         UserControl1.Controls.Add(warningLabel);
-
+                
                         myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                         myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                        myCustomTaskPane.Height = 65;
+                        myCustomTaskPane.Height = 90;
                         myCustomTaskPane.Visible = true;
                     }
                     else
@@ -90,7 +91,7 @@ namespace Macro_Polo_Word
                             myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                             myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 65;
+                            myCustomTaskPane.Height = 90;
                             myCustomTaskPane.Visible = true;
 
                         }
@@ -115,7 +116,7 @@ namespace Macro_Polo_Word
                             myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                             myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 65;
+                            myCustomTaskPane.Height = 90;
                             myCustomTaskPane.Visible = true;
 
                         }
