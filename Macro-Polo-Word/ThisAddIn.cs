@@ -26,7 +26,7 @@ namespace Macro_Polo_Word
         private int AreMacrosEnabled()
         {
             // Check macro security level in Trust Center
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Excel\Security"))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Word\Security"))
             {
                 object value = key.GetValue("VBAWarnings");
                 // 1 = Enable all macros (not recommended)
