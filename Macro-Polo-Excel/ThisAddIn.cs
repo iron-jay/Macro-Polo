@@ -25,16 +25,40 @@ namespace Macro_Polo_Excel
 
         private int AreMacrosEnabled()
         {
-            // Check macro security level in Trust Center
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Excel\Security"))
+            try
             {
-                object value = key.GetValue("VBAWarnings");
-                // 1 = Enable all macros (not recommended)
-                // 2 = Disable all with notification
-                // 3 = Disable all except digitally signed macros
-                // 4 = Disable all without notification
-                return (int)value;
-
+                // Check macro security level in Trust Center
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Excel\Security"))
+                {
+                    object value = key.GetValue("VBAWarnings");
+                    // 1 = Enable all macros (not recommended)
+                    // 2 = Disable all with notification
+                    // 3 = Disable all except digitally signed macros
+                    // 4 = Disable all without notification
+                    return (int)value;
+                }
+            }
+            catch
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Policies\Microsoft\Office\16.0\Excel\Security"))
+                {
+                    object value = key.GetValue("VBAWarnings");
+                    // 1 = Enable all macros (not recommended)
+                    // 2 = Disable all with notification
+                    // 3 = Disable all except digitally signed macros
+                    // 4 = Disable all without notification
+                    return (int)value;
+                }
+            }
+            finally
+            {
+                MessageBox.Show(
+                    $"Error: Unable to find regkey",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                Environment.Exit(1);
             }
         }
         private void Application_WorkbookOpen(Excel.Workbook Wb)
