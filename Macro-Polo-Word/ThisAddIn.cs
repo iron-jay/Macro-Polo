@@ -50,7 +50,7 @@ namespace Macro_Polo_Word
                     {
                         warningLabel = new Label
                         {
-                            Text = "This file has macros, but you do not have permission to run them.",
+                            Text = "This file has a macro, but you do not have permission to run them.",
                             Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold),
                             ForeColor = System.Drawing.Color.Black,
                             Location = new System.Drawing.Point(5, 2),
@@ -66,7 +66,7 @@ namespace Macro_Polo_Word
                         myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                         myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                        myCustomTaskPane.Height = 90;
+                        myCustomTaskPane.Height = 75;
                         myCustomTaskPane.Visible = true;
                     }
                     else
@@ -91,7 +91,7 @@ namespace Macro_Polo_Word
                             myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                             myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 90;
+                            myCustomTaskPane.Height = 75;
                             myCustomTaskPane.Visible = true;
 
                         }
@@ -116,7 +116,7 @@ namespace Macro_Polo_Word
                             myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
 
                             myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 90;
+                            myCustomTaskPane.Height = 75;
                             myCustomTaskPane.Visible = true;
 
                         }
