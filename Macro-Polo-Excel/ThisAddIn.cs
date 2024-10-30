@@ -25,9 +25,9 @@ namespace Macro_Polo_Excel
 
         private int AreMacrosEnabled()
         {
-            try
+
+            if (DoesRegistryKeyExist(@"Software\Microsoft\Office\16.0\Excel\Security"))
             {
-                // Check macro security level in Trust Center
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Excel\Security"))
                 {
                     object value = key.GetValue("VBAWarnings");
@@ -38,7 +38,8 @@ namespace Macro_Polo_Excel
                     return (int)value;
                 }
             }
-            catch
+
+            else if (DoesRegistryKeyExist(@"Software\Policies\Microsoft\Office\16.0\Excel\Security"))
             {
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Policies\Microsoft\Office\16.0\Excel\Security"))
                 {
@@ -50,15 +51,17 @@ namespace Macro_Polo_Excel
                     return (int)value;
                 }
             }
-            finally
+            else
             {
-                MessageBox.Show(
-                    $"Error: Unable to find regkey",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                Environment.Exit(1);
+                return 0;
+            }
+        }
+
+        private bool DoesRegistryKeyExist(string path)
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(path))
+            {
+                return key != null;
             }
         }
         private void Application_WorkbookOpen(Excel.Workbook Wb)
