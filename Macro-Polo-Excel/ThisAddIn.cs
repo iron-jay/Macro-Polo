@@ -2,6 +2,8 @@
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Drawing;
+using Microsoft.Office.Core;
 
 namespace Macro_Polo_Excel
 {
@@ -10,142 +12,168 @@ namespace Macro_Polo_Excel
         private UserControl UserControl1;
         private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPane;
         private Label warningLabel;
+        private int taskPaneHeight;
+        private Ribbon1 ribbon;
 
+        protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            ribbon = new Ribbon1();
+            return ribbon;
+        }
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            // Subscribe to the WorkbookOpen event
-            this.Application.WorkbookOpen += Application_WorkbookOpen;
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            // Clean up event subscription
-            this.Application.WorkbookOpen -= Application_WorkbookOpen;
+        }
+        private int CalculateHeight()
+        {
+            int screenheight = Screen.PrimaryScreen.Bounds.Height;
+
+            if (screenheight >= 2000)
+            {
+                return 75;
+            }
+            else if (screenheight >= 1080)
+            {
+                return 65;
+            }
+            else
+            {
+                float scaleFactor = screenheight / 1080f;
+                int scaledHeight = (int)(60 * scaleFactor);
+                return Math.Max(scaledHeight, 40);
+            }
+        }
+
+        private float CalculateFont()
+        {
+            if (taskPaneHeight >= 75)
+            {
+                return 16f;
+            }
+            else if (taskPaneHeight >= 60)
+            {
+                return 12f;
+            }
+            else
+            {
+                return 12f;
+            }
         }
 
         private int AreMacrosEnabled()
         {
-
-            if (DoesRegistryKeyExist(@"Software\Microsoft\Office\16.0\Excel\Security"))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Excel\Security"))
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Office\16.0\Excel\Security"))
+                object value = key.GetValue("VBAWarnings");
+                // 1 = Enable all macros (not recommended)
+                // 2 = Disable all with notification
+                // 3 = Disable all except digitally signed macros
+                // 4 = Disable all without notification
+
+                if (value == null)
                 {
-                    object value = key.GetValue("VBAWarnings");
-                    // 1 = Enable all macros (not recommended)
-                    // 2 = Disable all with notification
-                    // 3 = Disable all except digitally signed macros
-                    // 4 = Disable all without notification
+                    using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey(@"Software\Policies\Microsoft\Office\16.0\Excel\Security"))
+                    {
+                        object value2 = key2.GetValue("VBAWarnings");
+                        // 1 = Enable all macros (not recommended)
+                        // 2 = Disable all with notification
+                        // 3 = Disable all except digitally signed macros
+                        // 4 = Disable all without notification
+                        if (value2 == null)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return (int)value2;
+                        }
+                    }
+                }
+                else
+                {
                     return (int)value;
                 }
             }
-
-            else if (DoesRegistryKeyExist(@"Software\Policies\Microsoft\Office\16.0\Excel\Security"))
-            {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Policies\Microsoft\Office\16.0\Excel\Security"))
-                {
-                    object value = key.GetValue("VBAWarnings");
-                    // 1 = Enable all macros (not recommended)
-                    // 2 = Disable all with notification
-                    // 3 = Disable all except digitally signed macros
-                    // 4 = Disable all without notification
-                    return (int)value;
-                }
-            }
-            else
-            {
-                return 0;
-            }
         }
 
-        private bool DoesRegistryKeyExist(string path)
-        {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(path))
-            {
-                return key != null;
-            }
-        }
-        private void Application_WorkbookOpen(Excel.Workbook Wb)
+        public void CheckMacroStatus()
         {
             try
             {
+                Excel.Workbook Wb = this.Application.ActiveWorkbook;
+                string text;
+                Color forecolor;
+                Color backcolor;
+                taskPaneHeight = CalculateHeight();
+                float fontSzie = CalculateFont();
+
                 if (Wb.HasVBProject)
                 {
-                    if(AreMacrosEnabled() == 4)
+                    if (AreMacrosEnabled() == 4)
                     {
-                        warningLabel = new Label
+                        if (!Wb.VBASigned)
                         {
-                            Text = "This file has a macro, but you do not have permission to run them.",
-                            Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold),
-                            ForeColor = System.Drawing.Color.Black,
-                            Location = new System.Drawing.Point(5, 2),
-                            AutoSize = true,
-                            TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                            text = "The macro in this file is not signed. You also do not have permission to run macros.";
+                            forecolor = (Color)((new ColorConverter()).ConvertFromString("#FFFFFF"));
+                            backcolor = (Color)((new ColorConverter()).ConvertFromString("#205493"));
+                        }
+                        else
+                        {
+                            text = "This file has a signed macro, but you do not have permission to run them.";
+                            forecolor = (Color)((new ColorConverter()).ConvertFromString("#FFFFFF"));
+                            backcolor = (Color)((new ColorConverter()).ConvertFromString("#981b1e"));
+                        }   
 
-                        };
-
-                        UserControl1 = new UserControl();
-                        UserControl1.BackColor = System.Drawing.Color.Gray;
-                        UserControl1.Controls.Add(warningLabel);
-
-                        myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
-
-                        myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                        myCustomTaskPane.Height = 75;
-                        myCustomTaskPane.Visible = true;
                     }
                     else
                     {
                         if (!Wb.VBASigned)
                         {
-                            warningLabel = new Label
-                            {
-                                Text = "This file contains a macro, which has not been digitally signed.",
-                                Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold),
-                                ForeColor = System.Drawing.Color.Red,
-                                Location = new System.Drawing.Point(5, 2),
-                                AutoSize = true,
-                                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-
-                            };
-
-                            UserControl1 = new UserControl();
-                            UserControl1.BackColor = System.Drawing.Color.Orange;
-                            UserControl1.Controls.Add(warningLabel);
-
-                            myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
-
-                            myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 75;
-                            myCustomTaskPane.Visible = true;
-
+                            text = "This file contains a macro, which has not been digitally signed.";
+                            forecolor = (Color)((new ColorConverter()).ConvertFromString("#212121"));
+                            backcolor = (Color)((new ColorConverter()).ConvertFromString("#F9C642"));
                         }
 
                         else
                         {
-                            warningLabel = new Label
-                            {
-                                Text = "The macro in this document is digitally signed.",
-                                Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold),
-                                ForeColor = System.Drawing.Color.LightBlue,
-                                Location = new System.Drawing.Point(5, 2),
-                                AutoSize = true,
-                                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
 
-                            };
-
-                            UserControl1 = new UserControl();
-                            UserControl1.BackColor = System.Drawing.Color.Green;
-                            UserControl1.Controls.Add(warningLabel);
-
-                            myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
-
-                            myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
-                            myCustomTaskPane.Height = 75;
-                            myCustomTaskPane.Visible = true;
-
+                            text = "The macro in this document is digitally signed.";
+                            forecolor = (Color)((new ColorConverter()).ConvertFromString("#FFFFFF"));
+                            backcolor = (Color)((new ColorConverter()).ConvertFromString("#225D2E"));
                         }
                     }
                 }
+                else
+                {
+                    text = "No macro in this document.";
+                    forecolor = (Color)((new ColorConverter()).ConvertFromString("#FFFFFF"));
+                    backcolor = (Color)((new ColorConverter()).ConvertFromString("#323A45"));
+                }
+
+                warningLabel = new Label
+                {
+                    Text = text,
+                    Font = new System.Drawing.Font("Arial", fontSzie, System.Drawing.FontStyle.Bold),
+                    ForeColor = forecolor,
+                    Location = new System.Drawing.Point(5, 2),
+                    AutoSize = true,
+                    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+
+                };
+
+                UserControl1 = new UserControl();
+                UserControl1.BackColor = backcolor;
+                UserControl1.Controls.Add(warningLabel);
+
+                myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
+
+                myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
+                myCustomTaskPane.Height = taskPaneHeight;
+                myCustomTaskPane.Visible = true;
+
             }
             catch (Exception ex)
             {

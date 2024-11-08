@@ -196,7 +196,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Macro-Polo-Excel_1_TemporaryKey.pfx" />
+    <None Include="Macro-Polo-Excel_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -205,6 +208,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Ribbon1.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -216,6 +220,15 @@
     </Compile>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b270cf2a5d775.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\macro.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ribbon1.xml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -224,10 +237,13 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Macro-Polo-Excel_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Macro-Polo-Excel_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E489F5C65F2FD58F4D0719E745531F3FEBF44EFC</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>026A7B10CAED074A6D48F47342F40E0C8F8DC405</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\b270cf2a5d775.ico</ApplicationIcon>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

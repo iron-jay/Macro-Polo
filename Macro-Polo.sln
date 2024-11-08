@@ -20,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{AC0272
 		Images\word-unsigned.png = Images\word-unsigned.png
 	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Macro-Polo-Installer-x64", "Macro-Polo-Installer-x64\Macro-Polo-Installer-x64.vdproj", "{C1054BBF-0542-4F48-A4E3-B54B85A8A06E}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Macro-Polo-Installer-x64", "Macro-Polo-Installer-x64\Macro-Polo-Installer-x64.vdproj", "{9E8C9189-1940-4F7D-B031-64012FBB6A27}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Macro-Polo-Installer-x86", "Macro-Polo-Installer-x86\Macro-Polo-Installer-x86.vdproj", "{6571F86B-C934-48A7-A4A3-BE5D1F5A1745}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Macro-Polo-Installer-x86", "Macro-Polo-Installer-x86\Macro-Polo-Installer-x86.vdproj", "{EE74F484-0960-4882-8F33-5AD82E94DE09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,12 +38,14 @@ Global
 		{05D356CA-88A2-4AED-A903-AFB795FCC7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D356CA-88A2-4AED-A903-AFB795FCC7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D356CA-88A2-4AED-A903-AFB795FCC7C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1054BBF-0542-4F48-A4E3-B54B85A8A06E}.Debug|Any CPU.ActiveCfg = Debug
-		{C1054BBF-0542-4F48-A4E3-B54B85A8A06E}.Release|Any CPU.ActiveCfg = Release
-		{6571F86B-C934-48A7-A4A3-BE5D1F5A1745}.Debug|Any CPU.ActiveCfg = Debug
-		{6571F86B-C934-48A7-A4A3-BE5D1F5A1745}.Debug|Any CPU.Build.0 = Debug
-		{6571F86B-C934-48A7-A4A3-BE5D1F5A1745}.Release|Any CPU.ActiveCfg = Release
-		{6571F86B-C934-48A7-A4A3-BE5D1F5A1745}.Release|Any CPU.Build.0 = Release
+		{9E8C9189-1940-4F7D-B031-64012FBB6A27}.Debug|Any CPU.ActiveCfg = Debug
+		{9E8C9189-1940-4F7D-B031-64012FBB6A27}.Debug|Any CPU.Build.0 = Debug
+		{9E8C9189-1940-4F7D-B031-64012FBB6A27}.Release|Any CPU.ActiveCfg = Release
+		{9E8C9189-1940-4F7D-B031-64012FBB6A27}.Release|Any CPU.Build.0 = Release
+		{EE74F484-0960-4882-8F33-5AD82E94DE09}.Debug|Any CPU.ActiveCfg = Debug
+		{EE74F484-0960-4882-8F33-5AD82E94DE09}.Debug|Any CPU.Build.0 = Debug
+		{EE74F484-0960-4882-8F33-5AD82E94DE09}.Release|Any CPU.ActiveCfg = Release
+		{EE74F484-0960-4882-8F33-5AD82E94DE09}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

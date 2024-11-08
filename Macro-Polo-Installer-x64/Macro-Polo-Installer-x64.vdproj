@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_06EBA0A3F9A445E9A5BBB8DC5D5B9CB6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_20A5E8C8785B450858CD2885329FCBA5"
         "OwnerKey" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,13 +33,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
+        "MsmKey" = "8:_3B7EA48BEE754E06920D13039CC04A5F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_51A26CEB55754F3DA162E0ADD966FD50"
+        "MsmKey" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -111,12 +117,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_84E570341FB44F228C2EAF2A313AAFCC"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9632D7F631AACFABD9ED7EF688F372B1"
         "OwnerKey" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
         "MsmSig" = "8:_UNDEFINED"
@@ -172,7 +172,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_20A5E8C8785B450858CD2885329FCBA5"
+        "OwnerKey" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -185,12 +185,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_75E447E443E39871CA527374C70196D2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -229,6 +223,12 @@
         "OwnerKey" = "8:_79734C4C2D110A3BFA70D50AFD0DD29D"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_20A5E8C8785B450858CD2885329FCBA5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -247,6 +247,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -263,6 +279,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -292,6 +324,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_06EBA0A3F9A445E9A5BBB8DC5D5B9CB6"
+            {
+            "SourcePath" = "8:..\\Macro-Polo-Word\\bin\\Release\\Macro-Polo-Word.dll.manifest"
+            "TargetName" = "8:Macro-Polo-Word.dll.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_90C3D7E42BC84C2F81640A54BF764883"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_20A5E8C8785B450858CD2885329FCBA5"
             {
             "AssemblyRegister" = "3:1"
@@ -323,10 +375,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51A26CEB55754F3DA162E0ADD966FD50"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B7EA48BEE754E06920D13039CC04A5F"
             {
-            "SourcePath" = "8:..\\Macro-Polo-Word\\bin\\Release\\Macro-Polo-Word.dll.manifest"
-            "TargetName" = "8:Macro-Polo-Word.dll.manifest"
+            "SourcePath" = "8:..\\Macro-Polo-Word\\bin\\Release\\Macro-Polo-Word.vsto"
+            "TargetName" = "8:Macro-Polo-Word.vsto"
             "Tag" = "8:"
             "Folder" = "8:_90C3D7E42BC84C2F81640A54BF764883"
             "Condition" = "8:"
@@ -485,26 +537,6 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84E570341FB44F228C2EAF2A313AAFCC"
-            {
-            "SourcePath" = "8:..\\Macro-Polo-Word\\bin\\Release\\Macro-Polo-Word.vsto"
-            "TargetName" = "8:Macro-Polo-Word.vsto"
-            "Tag" = "8:"
-            "Folder" = "8:_90C3D7E42BC84C2F81640A54BF764883"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9632D7F631AACFABD9ED7EF688F372B1"
@@ -699,7 +731,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Macro Polo"
         "ProductCode" = "8:{9B5191C5-6567-4947-BD05-10B6CCF1EDD0}"
-        "PackageCode" = "8:{2045C2FD-A778-4FB7-8FD7-6DFAE021FFA9}"
+        "PackageCode" = "8:{6162124B-726F-48EC-940B-04771A6A4E9D}"
         "UpgradeCode" = "8:{CFD50934-7CDC-4972-9C58-BC9D2987C1AF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -716,8 +748,8 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
-        "ARPIconIndex" = "3:0"
+        "ARPPRODUCTICON" = "8:_3DCCC55561974E5D8CCED2C1D861E811"
+        "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
@@ -890,7 +922,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:Macro Polo"
+                                                                    "Value" = "8:Macro Polo Excel"
                                                                     }
                                                                     "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_D53418D55739431A91D591C93C2B1169"
                                                                     {
@@ -935,7 +967,7 @@
                                                             "Name" = "8:MacroPolo"
                                                             "Condition" = "8:"
                                                             "AlwaysCreate" = "11:FALSE"
-                                                            "DeleteAtUninstall" = "11:FALSE"
+                                                            "DeleteAtUninstall" = "11:TRUE"
                                                             "Transitive" = "11:FALSE"
                                                                 "Keys"
                                                                 {
@@ -956,7 +988,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:Macro Polo"
+                                                                    "Value" = "8:Macro Polo Word"
                                                                     }
                                                                     "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_907DA747E308455AB48970E5925F1610"
                                                                     {
