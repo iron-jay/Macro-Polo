@@ -14,6 +14,7 @@ namespace Macro_Polo_Word
         private Label warningLabel;
         private int taskPaneHeight;
         private Ribbon1 ribbon;
+        private bool isTaskPaneOpen = false;
 
         protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -26,6 +27,14 @@ namespace Macro_Polo_Word
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
+            if (myCustomTaskPane != null)
+            {
+                myCustomTaskPane.Dispose();
+            }
+        }
+        private void TaskPane_VisibleChanged(object sender, EventArgs e)
+        {
+            isTaskPaneOpen = myCustomTaskPane.Visible;
         }
         private int CalculateHeight()
         {
@@ -103,6 +112,10 @@ namespace Macro_Polo_Word
         {
             try
             {
+                if (isTaskPaneOpen)
+                {
+                    return;
+                }
                 Word.Document Doc = this.Application.ActiveDocument;
                 string text;
                 Color forecolor;
@@ -169,10 +182,12 @@ namespace Macro_Polo_Word
                 UserControl1.Controls.Add(warningLabel);
 
                 myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
+                myCustomTaskPane.VisibleChanged += TaskPane_VisibleChanged;
 
                 myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
                 myCustomTaskPane.Height = taskPaneHeight;
                 myCustomTaskPane.Visible = true;
+                isTaskPaneOpen = true;
 
             }
             catch (Exception ex)

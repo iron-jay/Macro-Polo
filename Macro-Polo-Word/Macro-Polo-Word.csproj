@@ -236,10 +236,11 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Macro-Polo-Word_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5FCA1A269702CFDA9CD198C28EA117D710F4E045</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>05336F875C715709376FC728C771D38E21690D0F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\b270cf2a5d775.ico</ApplicationIcon>
