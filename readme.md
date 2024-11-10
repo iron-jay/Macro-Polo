@@ -23,7 +23,7 @@ Document has a signed macro, and you have permission to run it:
 ![MP](Images/signed_allowed.png)
 
 Document has an unsigned macro, and you have permission to run it:
-![MP](Images/not__signed_allowed.png)
+![MP](Images/not_signed_allowed.png)
 
 Testing, no warranties, use at own risk, blah blah blah
 
