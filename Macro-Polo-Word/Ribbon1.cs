@@ -60,7 +60,7 @@ namespace Macro_Polo_Word
 
         public Bitmap ButtonImage(Office.IRibbonControl control)
         {
-            return Resources.macro;
+            return Resources.word;
         }
 
         #endregion

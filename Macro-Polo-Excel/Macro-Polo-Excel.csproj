@@ -247,10 +247,10 @@
     <None Include="Resources\b270cf2a5d775.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\macro.bmp" />
+    <EmbeddedResource Include="Ribbon1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ribbon1.xml" />
+    <None Include="Resources\excel.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

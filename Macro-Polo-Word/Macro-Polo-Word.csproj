@@ -226,7 +226,7 @@
     <EmbeddedResource Include="Ribbon1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\macro.bmp" />
+    <None Include="Resources\word.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

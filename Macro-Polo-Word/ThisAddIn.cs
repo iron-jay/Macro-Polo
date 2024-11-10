@@ -161,7 +161,7 @@ namespace Macro_Polo_Word
                 }
                 else
                 {
-                    text = "No macro in this document.";
+                    text = "There is no macro in this document.";
                     forecolor = (Color)((new ColorConverter()).ConvertFromString("#FFFFFF"));
                     backcolor = (Color)((new ColorConverter()).ConvertFromString("#323A45"));
                 }
