@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Drawing;
 using Microsoft.Office.Core;
+using System.Collections.Generic;
 
 namespace Macro_Polo_Excel
 {
@@ -16,6 +17,8 @@ namespace Macro_Polo_Excel
         private Ribbon1 ribbon;
         private bool isTaskPaneOpen = false;
 
+        private Dictionary<Excel.Workbook, Microsoft.Office.Tools.CustomTaskPane> documentTaskPanes =
+            new Dictionary<Excel.Workbook, Microsoft.Office.Tools.CustomTaskPane>();
 
         protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -28,10 +31,11 @@ namespace Macro_Polo_Excel
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            if (myCustomTaskPane != null)
+            foreach (var taskPane in documentTaskPanes.Values)
             {
-                myCustomTaskPane.Dispose();
+                taskPane.Dispose();
             }
+            documentTaskPanes.Clear();
         }
         private void TaskPane_VisibleChanged(object sender, EventArgs e)
         {
@@ -113,11 +117,22 @@ namespace Macro_Polo_Excel
         {
             try
             {
-                if (isTaskPaneOpen)
+
+                Excel.Workbook Wb = this.Application.ActiveWorkbook;
+
+                // Check if task pane already exists for this document
+                if (documentTaskPanes.TryGetValue(Wb, out var existingTaskPane))
                 {
+                    // If it exists and is visible, do nothing
+                    if (existingTaskPane.Visible)
+                    {
+                        return;
+                    }
+
+                    // If it exists but is not visible, make it visible
+                    existingTaskPane.Visible = true;
                     return;
                 }
-                Excel.Workbook Wb = this.Application.ActiveWorkbook;
                 string text;
                 Color forecolor;
                 Color backcolor;
@@ -183,14 +198,20 @@ namespace Macro_Polo_Excel
                 UserControl1.Controls.Add(warningLabel);
 
                 myCustomTaskPane = this.CustomTaskPanes.Add(UserControl1, "Macro Status");
-                myCustomTaskPane.VisibleChanged += TaskPane_VisibleChanged;
-
                 myCustomTaskPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop;
                 myCustomTaskPane.Height = taskPaneHeight;
                 myCustomTaskPane.Visible = true;
                 isTaskPaneOpen = true;
 
+                myCustomTaskPane.VisibleChanged += (sender, e) =>
+                {
+                    if (!myCustomTaskPane.Visible)
+                    {
+                        documentTaskPanes.Remove(Wb);
+                    }
+                };
 
+                documentTaskPanes[Wb] = myCustomTaskPane;
             }
             catch (Exception ex)
             {
